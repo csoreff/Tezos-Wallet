@@ -40,6 +40,7 @@ const Tab = styled(Button)`
 `;
 
 const TabList = styled.div`
+  background-color: ${({ theme: { colors } }) => colors.blue};
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 `;
@@ -161,7 +162,7 @@ class ActionPanel extends Component<Props, State> {
   };
 
   render() {
-    const tabs = [TRANSACTIONS, SEND, RECEIVE, DELEGATE];
+    const tabs = [TRANSACTIONS, SEND, RECEIVE];
 
     const { selectedAccountHash, selectedParentHash, selectedAccount, parentIdentity, parentIndex, syncWallet } = this.props;
     const transactions = selectedAccount.get('transactions');
