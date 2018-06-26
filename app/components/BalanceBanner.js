@@ -59,6 +59,11 @@ const Amount = styled(TezosAmount)`
   line-height: 1;
 `;
 
+const Delegate = styled.span`
+  color: ${ ({ theme: { colors } }) => colors.white };
+  font-size: ${ms(-1)};
+`
+
 const Breadcrumbs = styled.div`
   font-size: ${ms(-1)};
 `
@@ -67,7 +72,7 @@ function BalanceBanner(props: Props) {
   const { balance, publicKeyHash, onRefreshClick, theme, parentIndex, parentIdentity, isManagerAddress } = props;
   const smartAddressIndex = findAccountIndex(parentIdentity, publicKeyHash) + 1;
   const addressLabel = !isManagerAddress && smartAddressIndex  
-    ? `Smart Address ${smartAddressIndex}` 
+    ? `Delegated Address ${smartAddressIndex}` 
     : 'Manager Address';
   
   const breadcrumbs = `Account ${parentIndex} > ${addressLabel}`;
@@ -100,8 +105,9 @@ function BalanceBanner(props: Props) {
         </AddressTitle>
         <AddressInfo>
           <TezosAddress size={ms(1)} address={publicKeyHash} weight={theme.typo.weights.light} color={theme.colors.white} />
-          <Amount size={ms(4)} color="white" amount={ balance } weight="light" showTooltip />
+          <Amount size={ms(4)} color="white" amount={ balance} weight="light" showTooltip format={2} />
         </AddressInfo>
+        {!isManagerAddress && <Delegate>Delegated to the Manager Address</Delegate>}
       </BottomRow>
     </Container>
   );
