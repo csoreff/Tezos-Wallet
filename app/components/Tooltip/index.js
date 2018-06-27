@@ -18,7 +18,7 @@ function Tooltip(props: Props) {
   const { children, className, content, ...restOfProps } = props;
 
   return (
-    <StyledTooltip className={className} html={content} {...restOfProps}>
+    <StyledTooltip className={className} html={content} {...restOfProps} >
       {children}
     </StyledTooltip>
   );
@@ -28,7 +28,8 @@ Tooltip.defaultProps = {
   theme: 'tezos',
   arrow: true,
   arrowSize: 'regular',
-  distance: 20
+  distance: 20,
+  position: 'bottom'
 };
 
 export default Tooltip;

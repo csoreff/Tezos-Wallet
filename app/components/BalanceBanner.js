@@ -7,6 +7,7 @@ import { H4 } from './Heading';
 import TezosAmount from './TezosAmount';
 import TezosAddress from './TezosAddress';
 import TezosIcon from './TezosIcon';
+import CopyIcon from './CopyIcon';
 import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
 import { findAccountIndex } from '../utils/account';
 
@@ -105,7 +106,8 @@ function BalanceBanner(props: Props) {
         </AddressTitle>
         <AddressInfo>
           <TezosAddress size={ms(1)} address={publicKeyHash} weight={theme.typo.weights.light} color={theme.colors.white} />
-          <Amount size={ms(4)} color="white" amount={ balance} weight="light" showTooltip format={2} />
+          <CopyIcon text={publicKeyHash} color='white' />
+          <Amount size={ms(4)} color="white" amount={ balance } weight="light" showTooltip />
         </AddressInfo>
         {!isManagerAddress && <Delegate>Delegated to the Manager Address</Delegate>}
       </BottomRow>
